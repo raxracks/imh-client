@@ -71,7 +71,7 @@ function saveConfig() {
 
 function loadConfig() {
   document.getElementById("URL").innerText = '"https://' + document.location.host + '/$json:data.link$"';
-  document.getElementById("requestURL").innerText = '"https://imh-host.glitch.me/upload?embed=' + embed + '"';
+  document.getElementById("requestURL").innerText = '"https://imh-host.herokuapp.com/upload?embed=' + embed + '"';
 }
 
 function toggleEmbed() {
