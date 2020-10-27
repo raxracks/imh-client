@@ -25,7 +25,7 @@ function loadPage(path) {
 }
 
 function checkCache(path) {
-  fixedFetch("/check-ver/" + path + "SPA/" + localStorage[path + "-loaded"]).then(function(response) {
+  fixedFetch("/check-ver" + path + "SPA/" + localStorage[path + "-loaded"]).then(function(response) {
     response.text().then((text) => {
       if(text == 'true') {
         localStorage.removeItem(path);
