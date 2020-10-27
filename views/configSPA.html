@@ -1,0 +1,39 @@
+<center><spa onload="loadConfig()">
+  <a class="config-link" style="cursor:pointer" onclick="loadPage('/home')"><span>HOME</span></a>
+  <a class="config-link nav-separator"><span>|</span></a>
+  <a class="config-link active" style="cursor:pointer" ><span>CONFIG</span></a>
+  <a class="config-link nav-separator"><span>|</span></a>
+  <a class="config-link" style="cursor:pointer" onclick="loadPage('/extension')"><span>EXTENSION</span></a>
+  <a class="config-link nav-separator"><span>|</span></a>
+  <a class="config-link" style="cursor:pointer" onclick="loadPage('/upload')"><span>UPLOAD</span></a>
+  <a class="config-link nav-separator"><span>|</span></a>
+  <a class="config-link" style="cursor:pointer" onclick="loadPage('/discord')"><span>DISCORD</span></a>
+    <br>
+  <span id="usernameBoard"></span>
+    <center>
+      <br>
+      <div class="container"><code class="json hljs">{
+  <span class="hljs-attr">"Version"</span>: <span class="hljs-string">"13.1.0"</span>,
+  <span class="hljs-attr">"DestinationType"</span>: <span class="hljs-string">"ImageUploader"</span>,
+  <span class="hljs-attr">"RequestMethod"</span>: <span class="hljs-string">"POST"</span>,
+  <span class="hljs-attr">"Body"</span>: <span class="hljs-string">"MultipartFormData"</span>,
+  <span class="hljs-attr">"Name"</span>: <span class="hljs-string">"IMH"</span>,
+  <span class="hljs-attr">"FileFormName"</span>: <span class="hljs-string">"IMH"</span>,
+  <span class="hljs-attr">"RequestURL"</span>: <span class="hljs-string" id="requestURL">"https://imh-host.glitch.me/upload"</span>,
+  <span class="hljs-attr">"URL"</span>: <span class="hljs-string" id="URL">"$json:data.link$"</span>
+}</code>
+    </div>
+      <div>
+        <div id="block_container" onclick="toggleEmbed()">
+          <input checked type="checkbox" class="checkbox" id="embed" onclick="toggleEmbed()">  
+          <label for="embed" id="embedText" onclick="toggleEmbed()">Embed</label>
+        </div>
+      </div>
+      <br>
+      <button onclick="saveConfig()">
+        Download ShareX Config (.sxcu)
+      </button>
+      </center>
+</spa>
+  </center>
+
