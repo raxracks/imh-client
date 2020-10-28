@@ -25,8 +25,9 @@ function loadPage(path) {
 }
 
 function checkCache(path) {
-  fixedFetch("/check-ver/" + path + "SPA/" + localStorage[path + "-loaded"]).then(function(response) {
+  fixedFetch("/check-ver" + path + "SPA/" + localStorage[path + "-loaded"]).then(function(response) {
     response.text().then((text) => {
+      console.log(text);
       if(text == 'true') {
         localStorage.removeItem(path);
         localStorage.removeItem(path + "-loaded");
@@ -71,7 +72,7 @@ function saveConfig() {
 
 function loadConfig() {
   document.getElementById("URL").innerText = '"https://' + document.location.host + '/$json:data.link$"';
-  document.getElementById("requestURL").innerText = '"https://imh-host.glitch.me/upload?embed=' + embed + '"';
+  document.getElementById("requestURL").innerText = '"https://imh-host.herokuapp.com/upload?embed=' + embed + '"';
 }
 
 function toggleEmbed() {
