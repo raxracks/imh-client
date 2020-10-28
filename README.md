@@ -1,8 +1,24 @@
-# IMH "Client"
+# IMH Client
 
-An easy to deploy middleman shipped with the IMH website.
-<br>
-<br>
-This WILL NOT accept uploads, all uploads must be sent to the host, which you can either [host yourself](https://github.com/raxracks/imh-host) or use the [official host](https://imh-host.glitch.me). 
-<br>
-<img src="https://ci.appveyor.com/api/projects/status/github/raxracks/imh-client">
+IMH is an Imgur parse through that accepts calls to upload and serves a frontend and screenshot extension
+
+## Setup
+
+Install NodeJS and NPM if you haven't already.
+
+```bash
+git clone https://github.com/raxracks/imh-client
+cd imh-client
+npm install 
+node .
+```
+You will need to deploy a website running the webserver somehow.
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
+
+#### Build Status
+[![https://ci.appveyor.com/project/raxracks/imh-client](https://ci.appveyor.com/api/projects/status/github/raxracks/imh-client)](https://ci.appveyor.com/project/raxracks/imh-client)
