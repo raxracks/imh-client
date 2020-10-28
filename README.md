@@ -1,6 +1,6 @@
 # IMH Client
 
-IMH is an Imgur parse through that accepts calls to upload and serves a frontend and screenshot extension
+IMH is an Imgur parse through that accepts calls to upload and serves a frontend and screenshot extension. The IMH Client WILL NOT accept upload calls, only the [host](https://github.com/raxracks/imh-host) can do that.
 
 ## Setup
 
