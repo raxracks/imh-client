@@ -73,9 +73,30 @@ function saveConfig() {
 function loadConfig() {
   document.getElementById("URL").innerText = '"https://' + document.location.host + '/$json:data.link$"';
   document.getElementById("requestURL").innerText = '"https://imh-host.herokuapp.com/upload?embed=' + embed + '"';
-}
+};
 
 function toggleEmbed() {
   embed = document.getElementById("embed").checked;
   loadConfig();
-}
+};
+
+function loadStats() {
+  fetch("https://imh-host.herokuapp.com/stats/uploads").then(function(uploadResponse) {
+    uploadResponse.text().then((uploads) => {
+      fetch("https://imh-host.herokuapp.com/stats/size").then(function(sizeResponse) {
+        sizeResponse.text().then((size) => {
+          console.log(size);
+          let kb = size / 1000;
+          let mb = kb / 1000;
+          let gb = mb / 1000;
+          let unit = "GB";
+          let number = gb;
+          if(gb.toString().startsWith("0")) { unit = " MB"; number = mb; }
+          if(mb.toString().startsWith("0")) { unit = " KB"; number = kb; }
+          if(kb.toString().startsWith("0")) { unit = " B"; number = size; }
+          document.getElementById("stats").innerText = "UPLOADS: " + uploads + " | SIZE: " + Math.floor(number) + " " + unit;  
+        });
+      });
+    });
+  });
+};
