@@ -3,6 +3,15 @@ const fs = require("fs");
 const app = express();
 const request = require('request').defaults({ encoding: null });
 
+app.enable('trust proxy');
+
+app.use(function(request, response, next) {
+  if (process.env.NODE_ENV != 'development' && !request.secure) {
+    response.redirect("https://" + request.headers.host + request.url) 
+  } 
+  next();
+});
+
 function generateBase64Image(contentType, base64) {
   return "data:" + contentType + ";base64," + base64;
 }
