@@ -80,12 +80,11 @@ function toggleEmbed() {
   loadConfig();
 };
 
-function loadStats() {
-  fetch("https://imh-host.herokuapp.com/stats/uploads").then(function(uploadResponse) {
+function getStats() {
+  fixedFetch("https://imh-host.herokuapp.com/stats/uploads").then(function(uploadResponse) {
     uploadResponse.text().then((uploads) => {
-      fetch("https://imh-host.herokuapp.com/stats/size").then(function(sizeResponse) {
+      fixedFetch("https://imh-host.herokuapp.com/stats/size").then(function(sizeResponse) {
         sizeResponse.text().then((size) => {
-          console.log(size);
           let kb = size / 1000;
           let mb = kb / 1000;
           let gb = mb / 1000;
@@ -101,4 +100,12 @@ function loadStats() {
       });
     });
   });
+};
+
+function loadStats() {
+  getStats();
+  
+  setInterval(() => {
+    getStats();
+  }, 10000);
 };
