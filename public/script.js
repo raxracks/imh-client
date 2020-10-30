@@ -96,7 +96,7 @@ function loadStats() {
           if(gb.toString().startsWith("0")) { unit = "MB"; number = mb; }
           if(mb.toString().startsWith("0")) { unit = "KB"; number = kb; }
           if(kb.toString().startsWith("0")) { unit = "B"; number = size; }
-          document.getElementById("stats").innerText = "UPLOADS: " + uploads + " | SIZE: " + Math.floor(number) + " " + unit;  
+          document.getElementById("stats").innerText = "UPLOADS: " + uploads + " | SIZE: " + Math.round((number + Number.EPSILON) * 100) / 100 + " " + unit;  
         });
       });
     });
