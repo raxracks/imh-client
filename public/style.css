@@ -405,3 +405,10 @@ input[type="checkbox"]:checked + #embedText {
   -ms-user-select: none;
   user-select: none;
 }
+
+#stats {
+  position: fixed;     
+  text-align: center;    
+  bottom: 10px; 
+  width: 100%;
+}
