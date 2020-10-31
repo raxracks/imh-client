@@ -411,4 +411,5 @@ input[type="checkbox"]:checked + #embedText {
   text-align: center;    
   bottom: 10px; 
   width: 100%;
+  background: white;
 }

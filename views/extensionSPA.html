@@ -1,5 +1,5 @@
 <center>
-  <spa>
+  <spa onload="loadStats()">
   <a class="config-link" style="cursor:pointer" onclick="loadPage('/home')"><span>HOME</span></a>
   <a class="config-link nav-separator"><span>|</span></a>
   <a class="config-link" style="cursor:pointer" onclick="loadPage('/config')"><span>CONFIG</span></a>
@@ -66,5 +66,10 @@
           </div>
         </div>
       </div>
+    <br>
+    <br>
+    <div class="h7" id="stats">
+      UPLOADS: ... | TOTAL SIZE: ...
+    </div>
   </spa>
 </center>

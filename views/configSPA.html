@@ -1,4 +1,4 @@
-<center><spa onload="loadConfig()">
+<center><spa onload="loadConfig(); loadStats();">
   <a class="config-link" style="cursor:pointer" onclick="loadPage('/home')"><span>HOME</span></a>
   <a class="config-link nav-separator"><span>|</span></a>
   <a class="config-link active" style="cursor:pointer" ><span>CONFIG</span></a>
@@ -34,6 +34,9 @@
         Download ShareX Config (.sxcu)
       </button>
       </center>
+  <div class="h7" id="stats">
+      UPLOADS: ... | TOTAL SIZE: ...
+    </div>
 </spa>
   </center>
 
