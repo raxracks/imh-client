@@ -85,9 +85,9 @@ function getStats() {
     document.getElementById("stats").innerText = localStorage["cachedStats"];
   }
   
-  fixedFetch("https://imh-host.herokuapp.com/stats/uploads").then(function(uploadResponse) {
+  fixedFetch("https://imh-host.glitch.me/stats/uploads").then(function(uploadResponse) {
     uploadResponse.text().then((uploads) => {
-      fixedFetch("https://imh-host.herokuapp.com/stats/size").then(function(sizeResponse) {
+      fixedFetch("https://imh-host.glitch.me/stats/size").then(function(sizeResponse) {
         sizeResponse.text().then((size) => {
           let kb = size / 1000;
           let mb = kb / 1000;
