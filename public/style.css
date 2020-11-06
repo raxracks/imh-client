@@ -413,3 +413,16 @@ input[type="checkbox"]:checked + #embedText, input[type="checkbox"]:checked + #c
   width: 100%;
   background: white;
 }
+
+.text-box {
+  border-radius: 90px;
+  border: none;
+  background-color: #ededed;
+  outline: 0;
+  padding: 10px;
+  width: 300px;
+}
+
+.hidden {
+  display: none;
+}

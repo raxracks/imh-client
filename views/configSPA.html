@@ -33,6 +33,8 @@
           <input type="checkbox" class="checkbox" id="custom" onclick="toggleCustom()">  
           <label for="custom" id="customURL" onclick="toggleCustom()">Custom URL</label>
         </div>
+        <br>
+        <input placeholder="Custom URL" class="hidden text-box" id="customURLText" oninput="loadConfig()">
       </div>
       <br>
       <button onclick="saveConfig()">

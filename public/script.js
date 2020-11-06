@@ -75,10 +75,12 @@ function loadConfig() {
   document.getElementById("URL").innerText = '"https://' + document.location.host + '/$json:data.link$"';
   document.getElementById("requestURL").innerText = '"https://imh-host.herokuapp.com/upload?embed=' + embed + '"';
   if(custom) {
-    document.getElementById("requestURL").innerText = '"https://imh-host.herokuapp.com/upload?embed=' + embed + '&customURL=https://hi.com"';
+    document.getElementById("requestURL").innerText = '"https://imh-host.herokuapp.com/upload?embed=' + embed + '&customURL=' + document.getElementById("customURLText").value + '"';
     document.getElementById("URL").innerText = '"$json:data.link$"';
+    document.getElementById("customURLText").classList.remove("hidden");
   } else {
     document.getElementById("URL").innerText = '"https://' + document.location.host + '/$json:data.link$"';
+    document.getElementById("customURLText").classList.add("hidden");
   }
 };
 
