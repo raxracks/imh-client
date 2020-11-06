@@ -123,10 +123,10 @@ function getStats() {
   });
 };
 
-function loadStats() {
-  getStats();
+// function loadStats() {
+//   getStats();
   
-  setInterval(() => {
-    getStats();
-  }, 10000);
-};
+//   setInterval(() => {
+//     getStats();
+//   }, 10000);
+// };
