@@ -377,7 +377,7 @@ input[type=checkbox] {
 		position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
 }
 
-input[type=checkbox], #embedText {
+input[type=checkbox], #embedText, #customURL {
 	padding-left:30px;
 	height:25px; 
 	display:inline-block;
@@ -389,14 +389,14 @@ input[type=checkbox], #embedText {
 	cursor:pointer;
 }
 
-input[type="checkbox"] + #embedText {
+input[type="checkbox"] + #embedText, input[type="checkbox"]:checked + #customURL {
   background-position: 0 0;
 }
-input[type="checkbox"]:checked + #embedText {
+input[type="checkbox"]:checked + #embedText, input[type="checkbox"]:checked + #customURL {
   background-position: 0 -25px;
 }
 
-#embedText {
+#embedText, #customURL {
   background-image:url(https://imh.herokuapp.com/i/lqWKxQU.png);
   -webkit-touch-callout: none;
   -webkit-user-select: none;

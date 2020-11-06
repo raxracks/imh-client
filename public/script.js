@@ -1,4 +1,5 @@
 let embed = true;
+let custom = false;
 
 function loadPage(path) {
   window.history.pushState(path, path, path);
@@ -73,10 +74,21 @@ function saveConfig() {
 function loadConfig() {
   document.getElementById("URL").innerText = '"https://' + document.location.host + '/$json:data.link$"';
   document.getElementById("requestURL").innerText = '"https://imh-host.herokuapp.com/upload?embed=' + embed + '"';
+  if(custom) {
+    document.getElementById("requestURL").innerText = '"https://imh-host.herokuapp.com/upload?embed=' + embed + '&customURL=https://hi.com"';
+    document.getElementById("URL").innerText = '"$json:data.link$"';
+  } else {
+    document.getElementById("URL").innerText = '"https://' + document.location.host + '/$json:data.link$"';
+  }
 };
 
 function toggleEmbed() {
   embed = document.getElementById("embed").checked;
+  loadConfig();
+};
+
+function toggleCustom() {
+  custom = document.getElementById("custom").checked;
   loadConfig();
 };
 
