@@ -94,34 +94,34 @@ function toggleCustom() {
   loadConfig();
 };
 
-function getStats() {
-  if(localStorage["cachedStats"]) {
-    document.getElementById("stats").innerText = localStorage["cachedStats"];
-  }
+// function getStats() {
+//   if(localStorage["cachedStats"]) {
+//     document.getElementById("stats").innerText = localStorage["cachedStats"];
+//   }
   
-  fixedFetch("https://imh-host.glitch.me/stats/uploads").then(function(uploadResponse) {
-    uploadResponse.text().then((uploads) => {
-      fixedFetch("https://imh-host.glitch.me/stats/size").then(function(sizeResponse) {
-        sizeResponse.text().then((size) => {
-          let kb = size / 1000;
-          let mb = kb / 1000;
-          let gb = mb / 1000;
-          let tb = gb / 1000;
-          let unit = "TB";
-          let number = gb;
-          if(tb.toString().startsWith("0")) { unit = "GB"; number = gb; }
-          if(gb.toString().startsWith("0")) { unit = "MB"; number = mb; }
-          if(mb.toString().startsWith("0")) { unit = "KB"; number = kb; }
-          if(kb.toString().startsWith("0")) { unit = "B"; number = size; }
-          uploads = uploads.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-          let statsString = "UPLOADS: " + uploads + " | TOTAL SIZE: " + Math.round((number + Number.EPSILON) * 100) / 100 + " " + unit; 
-          localStorage.setItem("cachedStats", statsString);
-          document.getElementById("stats").innerText = statsString;
-        });
-      });
-    });
-  });
-};
+//   fixedFetch("https://imh-host.glitch.me/stats/uploads").then(function(uploadResponse) {
+//     uploadResponse.text().then((uploads) => {
+//       fixedFetch("https://imh-host.glitch.me/stats/size").then(function(sizeResponse) {
+//         sizeResponse.text().then((size) => {
+//           let kb = size / 1000;
+//           let mb = kb / 1000;
+//           let gb = mb / 1000;
+//           let tb = gb / 1000;
+//           let unit = "TB";
+//           let number = gb;
+//           if(tb.toString().startsWith("0")) { unit = "GB"; number = gb; }
+//           if(gb.toString().startsWith("0")) { unit = "MB"; number = mb; }
+//           if(mb.toString().startsWith("0")) { unit = "KB"; number = kb; }
+//           if(kb.toString().startsWith("0")) { unit = "B"; number = size; }
+//           uploads = uploads.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+//           let statsString = "UPLOADS: " + uploads + " | TOTAL SIZE: " + Math.round((number + Number.EPSILON) * 100) / 100 + " " + unit; 
+//           localStorage.setItem("cachedStats", statsString);
+//           document.getElementById("stats").innerText = statsString;
+//         });
+//       });
+//     });
+//   });
+// };
 
 // function loadStats() {
 //   getStats();
