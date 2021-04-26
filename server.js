@@ -36,8 +36,22 @@ function generateEmbedMeta(path, image, message) {
         <meta property="twitter:title" content="${path.split("/").join("")}">
         <meta property="twitter:description" content="${message}">
         <meta property="twitter:image" content="https://i.imgur.com/${path}">
+        
+        <center>
+        <h1>${path.split("/").join("")}</h1>
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+        
+        <link rel="stylesheet" href="/imagestyle.css">
 
-        <img src="${image}">`;
+        <img src="${image}">
+        
+        <br>
+        
+        <h3>${message}</h3>
+        
+        </center>`;
 };
 
 app.use(express.static("public"));
