@@ -11,7 +11,6 @@
     <br>
   <span id="usernameBoard"></span>
     <center>
-      <br>
       <div class="container"><code class="json hljs">{
   <span class="hljs-attr">"Version"</span>: <span class="hljs-string">"13.1.0"</span>,
   <span class="hljs-attr">"DestinationType"</span>: <span class="hljs-string">"ImageUploader"</span>,
@@ -34,7 +33,14 @@
           <label for="custom" id="customURL" onclick="toggleCustom()">Custom URL</label>
         </div>
         <br>
+        <div id="customMessageDiv" class="hidden" onclick="toggleCustomMessage()">
+          <input type="checkbox" class="checkbox" id="customMessage" onclick="toggleCustomMessage()">  
+          <label for="customMessage" id="customMessageLabel" onclick="toggleCustomMessage()">Custom Message</label>
+        </div>
+        <br>
         <input placeholder="Custom URL" class="hidden text-box" id="customURLText" oninput="loadConfig()">
+        
+        <input placeholder="Custom Message" class="hidden text-box" id="customMessageText" oninput="loadConfig()">
       </div>
       <br>
       <button onclick="saveConfig()">

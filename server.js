@@ -16,25 +16,25 @@ function generateBase64Image(contentType, base64) {
   return "data:" + contentType + ";base64," + base64;
 }
 
-function generateEmbedMeta(path, image) {
+function generateEmbedMeta(path, image, message) {
   return `
         <!-- Primary Meta Tags -->
         <title>IMH</title>
         <meta name="title" content="IMH">
-        <meta name="description" content="Uploaded with IMH">
+        <meta name="description" content="${message}">
 
         <!-- Open Graph / Facebook -->
         <meta property="og:type" content="website">
         <meta property="og:url" content="https://imh.glitch.me/${path}">
         <meta property="og:title" content="${path.split("/").join("")}">
-        <meta property="og:description" content="Uploaded with IMH">
+        <meta property="og:description" content="${message}">
         <meta property="og:image" content="https://i.imgur.com/${path}">
 
         <!-- Twitter -->
         <meta property="twitter:card" content="summary_large_image">
         <meta property="twitter:url" content="https://imh.glitch.me/${path}">
         <meta property="twitter:title" content="${path.split("/").join("")}">
-        <meta property="twitter:description" content="Uploaded with IMH">
+        <meta property="twitter:description" content="${message}">
         <meta property="twitter:image" content="https://i.imgur.com/${path}">
 
         <img src="${image}">`;
@@ -138,10 +138,18 @@ app.get('/IMH_Extension', (req, res) => {
 app.get("/*", (req, res) => {
   let path = req.path;
   let embed = false;
+  let message = "Uploaded with IMH";
+  
   if(path.startsWith("/i/")) {
     path = path.split("/i/").join("");
     embed = true;
   }
+  
+  if(path.includes("/m/")) {
+    message = decodeURI(path.split("/m/")[1]);
+    path = path.split("/m/")[0];
+  }
+  
   request.get(`https://i.imgur.com/${path}`, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       let base64 = Buffer.from(body).toString('base64');
@@ -153,7 +161,7 @@ app.get("/*", (req, res) => {
         });
         res.end(imageBuffer);
       } else {
-        res.send(generateEmbedMeta(path, image));
+        res.send(generateEmbedMeta(path, image, message));
       };
     };
   });

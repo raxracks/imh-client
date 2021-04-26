@@ -320,7 +320,7 @@ code {
 }
 
 .container {
-  display: -webkit-flexbox;
+  /*display: -webkit-flexbox;
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
@@ -329,8 +329,8 @@ code {
   -webkit-align-items: center;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  padding-top: 8vh;
+  flex-direction: column;*/
+  padding-top: 4vh;
   padding-left: 5vw;
   padding-right: 5vw;
 }
@@ -377,7 +377,7 @@ input[type=checkbox] {
 		position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
 }
 
-input[type=checkbox], #embedText, #customURL {
+input[type=checkbox], #embedText, #customURL, #customMessageLabel {
 	padding-left:30px;
 	height:25px; 
 	display:inline-block;
@@ -389,14 +389,14 @@ input[type=checkbox], #embedText, #customURL {
 	cursor:pointer;
 }
 
-input[type="checkbox"] + #embedText, input[type="checkbox"]:checked + #customURL {
+input[type="checkbox"] + #embedText, input[type="checkbox"]:checked + #customURL, input[type="checkbox"]:checked + #customMessageLabel {
   background-position: 0 0;
 }
-input[type="checkbox"]:checked + #embedText, input[type="checkbox"]:checked + #customURL {
+input[type="checkbox"]:checked + #embedText, input[type="checkbox"]:checked + #customURL, input[type="checkbox"]:checked + #customMessageLabel {
   background-position: 0 -25px;
 }
 
-#embedText, #customURL {
+#embedText, #customURL, #customMessageLabel {
   background-image:url(https://imh.glitch.me/i/lqWKxQU.png);
   -webkit-touch-callout: none;
   -webkit-user-select: none;

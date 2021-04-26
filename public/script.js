@@ -1,5 +1,7 @@
 let embed = true;
 let custom = false;
+let customMessage = false;
+let host = "http://imh-host.rax_racks.repl.co";
 
 function loadPage(path) {
   window.history.pushState(path, path, path);
@@ -73,14 +75,33 @@ function saveConfig() {
 
 function loadConfig() {
   document.getElementById("URL").innerText = '"https://' + document.location.host + '/$json:data.link$"';
-  document.getElementById("requestURL").innerText = '"https://imh-host.glitch.me/upload?embed=' + embed + '"';
+  document.getElementById("requestURL").innerText = '"' + encodeURI(host + '/upload?embed=' + embed) + '"';
   if(custom) {
-    document.getElementById("requestURL").innerText = '"https://imh-host.glitch.me/upload?embed=' + embed + '&customURL=' + document.getElementById("customURLText").value + '"';
+    document.getElementById("requestURL").innerText = '"' + encodeURI(host + '/upload?embed=' + embed + '&customURL=' + document.getElementById("customURLText").value) + '"';
     document.getElementById("URL").innerText = '"$json:data.link$"';
     document.getElementById("customURLText").classList.remove("hidden");
   } else {
+    document.getElementById("requestURL").innerText = '"' + encodeURI(host + '/upload?embed=' + embed) + '"';
     document.getElementById("URL").innerText = '"https://' + document.location.host + '/$json:data.link$"';
     document.getElementById("customURLText").classList.add("hidden");
+  }
+  
+  if(embed) {
+    document.getElementById("customMessageDiv").classList.remove("hidden");
+  } else {
+    document.getElementById("customMessageDiv").classList.add("hidden");
+  }
+  
+  if(customMessage && embed) {
+    if(custom) {
+      document.getElementById("requestURL").innerText = '"' + encodeURI(host + '/upload?embed=' + embed + '&customURL=' + document.getElementById("customURLText").value + '&message=' + document.getElementById("customMessageText").value) + '"';
+    } else {
+      document.getElementById("requestURL").innerText = '"' + encodeURI(host + '/upload?embed=' + embed + '&message=' + document.getElementById("customMessageText").value) + '"';
+    }
+
+    document.getElementById("customMessageText").classList.remove("hidden");
+  } else {
+    document.getElementById("customMessageText").classList.add("hidden");
   }
 };
 
@@ -91,6 +112,11 @@ function toggleEmbed() {
 
 function toggleCustom() {
   custom = document.getElementById("custom").checked;
+  loadConfig();
+};
+
+function toggleCustomMessage() {
+  customMessage = document.getElementById("customMessage").checked;
   loadConfig();
 };
 
