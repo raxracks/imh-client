@@ -73,9 +73,9 @@ function saveConfig() {
 
 function loadConfig() {
   document.getElementById("URL").innerText = '"https://' + document.location.host + '/$json:data.link$"';
-  document.getElementById("requestURL").innerText = '"https://imh-host.herokuapp.com/upload?embed=' + embed + '"';
+  document.getElementById("requestURL").innerText = '"https://imh-host.glitch.me/upload?embed=' + embed + '"';
   if(custom) {
-    document.getElementById("requestURL").innerText = '"https://imh-host.herokuapp.com/upload?embed=' + embed + '&customURL=' + document.getElementById("customURLText").value + '"';
+    document.getElementById("requestURL").innerText = '"https://imh-host.glitch.me/upload?embed=' + embed + '&customURL=' + document.getElementById("customURLText").value + '"';
     document.getElementById("URL").innerText = '"$json:data.link$"';
     document.getElementById("customURLText").classList.remove("hidden");
   } else {
@@ -94,39 +94,42 @@ function toggleCustom() {
   loadConfig();
 };
 
-// function getStats() {
-//   if(localStorage["cachedStats"]) {
-//     document.getElementById("stats").innerText = localStorage["cachedStats"];
-//   }
+function getStats() {
+  if(localStorage["cachedStats"]) {
+    document.getElementById("stats").innerText = localStorage["cachedStats"];
+  }
   
-//   fixedFetch("https://imh-host.glitch.me/stats/uploads").then(function(uploadResponse) {
-//     uploadResponse.text().then((uploads) => {
-//       fixedFetch("https://imh-host.glitch.me/stats/size").then(function(sizeResponse) {
-//         sizeResponse.text().then((size) => {
-//           let kb = size / 1000;
-//           let mb = kb / 1000;
-//           let gb = mb / 1000;
-//           let tb = gb / 1000;
-//           let unit = "TB";
-//           let number = gb;
-//           if(tb.toString().startsWith("0")) { unit = "GB"; number = gb; }
-//           if(gb.toString().startsWith("0")) { unit = "MB"; number = mb; }
-//           if(mb.toString().startsWith("0")) { unit = "KB"; number = kb; }
-//           if(kb.toString().startsWith("0")) { unit = "B"; number = size; }
-//           uploads = uploads.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-//           let statsString = "UPLOADS: " + uploads + " | TOTAL SIZE: " + Math.round((number + Number.EPSILON) * 100) / 100 + " " + unit; 
-//           localStorage.setItem("cachedStats", statsString);
-//           document.getElementById("stats").innerText = statsString;
-//         });
-//       });
-//     });
-//   });
-// };
+  fixedFetch("https://imh-host.glitch.me/stats/uploads").then(function(uploadResponse) {
+    uploadResponse.text().then((uploads) => {
+      fixedFetch("https://imh-host.glitch.me/stats/size").then(function(sizeResponse) {
+        sizeResponse.text().then((size) => {
+          let kb = size / 1000;
+          let mb = kb / 1000;
+          let gb = mb / 1000;
+          let tb = gb / 1000;
+          let unit = "TB";
+          let number = gb;
+          
+          if(tb.toString().startsWith("0")) { unit = "GB"; number = gb; }
+          if(gb.toString().startsWith("0")) { unit = "MB"; number = mb; }
+          if(mb.toString().startsWith("0")) { unit = "KB"; number = kb; }
+          if(kb.toString().startsWith("0")) { unit = "B"; number = size; }
+          
+          uploads = uploads.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+          let statsString = "UPLOADS: " + uploads + " | TOTAL SIZE: " + Math.round((number + Number.EPSILON) * 100) / 100 + " " + unit; 
+          localStorage.setItem("cachedStats", statsString);
+          
+          document.getElementById("stats").innerText = statsString;
+        });
+      });
+    });
+  });
+};
 
-// function loadStats() {
-//   getStats();
+function loadStats() {
+  getStats();
   
-//   setInterval(() => {
-//     getStats();
-//   }, 10000);
-// };
+  setInterval(() => {
+    getStats();
+  }, 10000);
+};

@@ -397,7 +397,7 @@ input[type="checkbox"]:checked + #embedText, input[type="checkbox"]:checked + #c
 }
 
 #embedText, #customURL {
-  background-image:url(https://imh.herokuapp.com/i/lqWKxQU.png);
+  background-image:url(https://imh.glitch.me/i/lqWKxQU.png);
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
